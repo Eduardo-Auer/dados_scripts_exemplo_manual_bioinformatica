@@ -157,7 +157,7 @@ shapiro_test <- dados_manipulados %>%
   shapiro_test(age, bmi, tg, hdl, ldl, na, k, bp) %>%    # Aplica o teste de Shapiro-Wilk para verificar a normalidade das variáveis numéricas selecionadas
   arrange(variable) %>%                                  # Organiza o resultado em ordem alfabética das variáveis
   filter(p >= 0.05) %>%                                  # Filtra apenas as variáveis que têm p-valor >= 0.05, indicando que seguem uma distribuição normal (variáveis paramétricas)
-  mutate_at(vars(statistic, p), ~signif(.,2))            # Arredonda os valores das colunas P, p_bonferroni, p_fdr e p_monte_carlo para duas casas significativas
+  mutate_at(vars(statistic, p), ~signif(.,2))            # Arredonda os valores da coluna do valor de P
 view(shapiro_test)                                       # mostra os resultados dos testes de shapiro-wilk
 
 #variáveis não-paramétricas: imc, pressão arterial, hdl, ldl, na, k (p < 0.05 em um dos grupos)
