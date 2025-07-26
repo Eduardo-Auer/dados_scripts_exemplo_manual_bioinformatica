@@ -156,14 +156,16 @@ shapiro_test <- dados_manipulados %>%
   group_by(cath) %>%                                     # Agrupa os dados por 'cath', permitindo a realização do teste por grupo (DAC, controle).
   shapiro_test(age, bmi, tg, hdl, ldl, na, k, bp) %>%    # Aplica o teste de Shapiro-Wilk para verificar a normalidade das variáveis numéricas selecionadas
   arrange(variable) %>%                                  # Organiza o resultado em ordem alfabética das variáveis
-  filter (p >= 0.05)                                     # Filtra apenas as variáveis que têm p-valor >= 0.05, indicando que seguem uma distribuição normal (variáveis paramétricas)
+  filter(p >= 0.05) %>%                                  # Filtra apenas as variáveis que têm p-valor >= 0.05, indicando que seguem uma distribuição normal (variáveis paramétricas)
+  mutate_at(vars(statistic, p), ~signif(.,2))            # Arredonda os valores das colunas P, p_bonferroni, p_fdr e p_monte_carlo para duas casas significativas
+view(shapiro_test)                                       # mostra os resultados dos testes de shapiro-wilk
 
 #variáveis não-paramétricas: imc, pressão arterial, hdl, ldl, na, k (p < 0.05 em um dos grupos)
 #variáveis paramétricas: idade (p > 0.05 nos dois grupos)
 
 
 #teste F para testar homogeneidade de variâncias entre os grupos####
-#teste estatístico paramétrico
+#teste estatístico paramétrico (para 2 grupos)
 
 var.test(age ~ cath, data = dados_manipulados)   # ~ indica que age é a variável analisada e cath é a variável de agrupamento.
 
@@ -270,7 +272,11 @@ descricao_indiviuos_por_grupo <- dados_manipulados %>%
   separate_p_footnotes() %>%                   # Separa as notas de rodapé
   as_flex_table()                              # Converte a tabela para o formato flexível de tabelas para documentos Word
 
-save_as_docx(descricao_indiviuos_por_grupo, path = "Estatísticas entre os grupos.docx")
+
+descricao_indiviuos_por_grupo #reporta a tabela de regressão univariada salva na aba "viewer" do Rstudio
+
+
+save_as_docx(descricao_indiviuos_por_grupo, path = "Estatísticas entre os grupos.docx") #salva a tabela tabela de regressão univariada em formato ".docx"
 
 
 #Teste de fisher pairwise####

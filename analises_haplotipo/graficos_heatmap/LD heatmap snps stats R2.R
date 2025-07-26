@@ -1,7 +1,6 @@
 #Instalar pacotes 
 install.packages("BiocManager", dependencies = TRUE)
-BiocManager::install(version = "3.19")
-BiocManager::install("snpStats", version = "3.19")
+BiocManager::install("snpStats")
 install.packages("ggplot2", dependencies = TRUE)
 install.packages("RColorBrewer", dependencies = TRUE)
 install.packages("tidyverse", dependencies = TRUE)
