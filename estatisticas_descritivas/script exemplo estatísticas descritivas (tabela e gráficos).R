@@ -298,7 +298,7 @@ ggbetweenstats( # Cria um gráfico de boxplot para comparar a idade entre os gru
   ggsignif.args = list(textsize = 4.3, tip_length = 0.01), # Ajusta o tamanho do texto e o comprimento das linhas de destaque para comparações significativas
   type = "parametric", # Especifica que o teste estatístico deve ser paramétrico
   var.equal = TRUE, # Assume variâncias iguais para o teste paramétrico
-  k = 2, # Número de grupos a serem comparados (no caso, dois grupos)
+  k = 2, # número de casas decimais após a vírgula
   outlier.tagging = FALSE, # Não marca os outliers no gráfico
   centrality.type = "parametric", # Define o tipo de centralidade como paramétrica (média)
   centrality.plotting = TRUE, # Plota a centralidade (média) no gráfico
