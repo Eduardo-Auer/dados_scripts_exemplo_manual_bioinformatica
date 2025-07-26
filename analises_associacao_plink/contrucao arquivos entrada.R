@@ -46,7 +46,7 @@ dados_cov <- dados_phe_cov %>% select(FID, IID, gender, age)
 rm(arquivo_fam_plink, planilha_dados, dados_phe_cov)
 
 #salvar arquivo pheno plink pronto####
-write.table(dados_phe, file = "phenotype.txt", quote = FALSE, col.names = TRUE, row.names = FALSE, sep = " ", na = "-9")
+write.table(dados_phe, file = "phenotype.txt", quote = FALSE, col.names = TRUE, row.names = FALSE, sep = " ", na = "NA")
 
 #salvar arquivo covar plink pronto####
-write.table(dados_cov, file = "covariates.txt", quote = FALSE, col.names = TRUE, row.names = FALSE, sep = " ", na = "-9")
+write.table(dados_cov, file = "covariates.txt", quote = FALSE, col.names = TRUE, row.names = FALSE, sep = " ", na = "NA")
