@@ -1,0 +1,30 @@
+#Atenção! ajuste nos comandos os diretórios e arquivos utilizados para não dar erro no Plink.
+
+
+#frequência alélica em todo o grupo amostral#############
+plink --bfile plink_example_chr_21 --freq --nonfounders --out frequencia_alelica_todas_variantes_todas_amostras
+
+#contagem alélica em todo o  grupo amostral#############
+plink --bfile  plink_example_chr_21 --freq counts --nonfounders --out contagem_alelica_todas_variantes_todas_amostras
+
+
+
+#Gerar modelos de regressão logística#############
+
+#Modelo aditivo
+
+plink --bfile  plink_example_chr_21 --logistic hide-covar --ci 0.95 --pheno phenotype.txt --covar covariates.txt --mperm 1000 --seed 12354 --out analises_modelo_aditivo
+
+#Modelo recessivo
+plink --bfile  plink_example_chr_21 --logistic recessive hide-covar --ci 0.95 --pheno phenotype.txt --covar covariates.txt --mperm 1000 --seed 12354 --out analises_modelo_recessivo
+
+#Modelo dominante
+plink --bfile  plink_example_chr_21 --logistic dominant hide-covar --ci 0.95 --pheno phenotype.txt --covar covariates.txt --mperm 1000 --seed 12354 --out analises_modelo_dominante
+
+
+#frequência alélica nos casos e controles#############
+plink -bfile  plink_example_chr_21 --pheno phenotype.txt --freq case-control --nonfounders --out frequencia_alelica_caso_controle
+
+
+#Frequência genótipos e equilíbrio de HWE#############
+plink -bfile  plink_example_chr_21 --pheno phenotype.txt --hardy midp --nonfounders --out hardy_weinberg_caso_controle

@@ -1,0 +1,13 @@
+#converter dados binários para formato ped e map
+plink --bfile plink_example_chr_21 --nonfounders --extract selecao_snps.txt --recode --out plink_example_chr_21
+
+#converter dados do formato ped e map para binários
+plink --file plink_example_chr_21 --nonfounders --make-bed --out plink_example_chr_21_convertido
+
+#converter dados binários para formato ped e map (formato haploview)
+plink --bfile plink_example_chr_21 --nonfounders --extract selecao_snps.txt --recode HV --out plink_example
+
+
+
+
+
